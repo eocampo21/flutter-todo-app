@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'components/core/card.dart';
-
-class Todo {
-  Todo({required this.name, required this.checked});
-  final String name;
-  bool checked;
-}
+import 'models/todo.dart';
+import 'widgets/card.dart';
 
 class TodoList extends StatefulWidget {
   const TodoList({super.key});
