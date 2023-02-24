@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 
-typedef ItemSelectedCallback = void Function(String);
+// Callbacks
+typedef EditDeleteItemCallback = void Function(int);
 
 class CardView extends StatelessWidget {
-  /// Input
+  // Inputs
   final String title;
+  final int index;
 
-  const CardView({Key? key, required this.title}) : super(key: key);
+  // Outputs
+  final EditDeleteItemCallback onDeleteClicked;
+  final EditDeleteItemCallback onEditClicked;
+
+  const CardView(
+      {Key? key,
+      required this.title,
+      required this.index,
+      required this.onEditClicked,
+      required this.onDeleteClicked})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +48,18 @@ class CardView extends StatelessWidget {
                     children: <Widget>[
                       TextButton(
                         child: const Text('Delete'),
-                        onPressed: () {/* ... */},
+                        onPressed: () {
+                          debugPrint('movieTitle: $index');
+                          onDeleteClicked(index);
+                        },
                       ),
                       // const SizedBox(width: 8),
                       TextButton(
                         child: const Text('Edit'),
-                        onPressed: () {/* ... */},
+                        onPressed: () {
+                          debugPrint('movieTitle: $index');
+                          onEditClicked(index);
+                        },
                       ),
                       // const SizedBox(width: 8),
                     ],

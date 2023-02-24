@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../models/todo.dart';
 import '../widgets/list_view.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  _TodoListState createState() => _TodoListState();
+  _HomeState createState() => _HomeState();
 }
 
-class _TodoListState extends State<Home> {
+class _HomeState extends State<HomeView> {
   final TextEditingController _textFieldController = TextEditingController();
   final List<Todo> _todos = <Todo>[];
 
@@ -20,7 +20,7 @@ class _TodoListState extends State<Home> {
       appBar: AppBar(
         title: const Text('Todo list'),
       ),
-      body: Listview(list: _todos),
+      body: ListProviderView(list: _todos),
       floatingActionButton: FloatingActionButton(
           onPressed: () => _displayDialog(),
           tooltip: 'Add Item',
