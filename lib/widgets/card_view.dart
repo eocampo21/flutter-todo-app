@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+
+typedef ItemSelectedCallback = void Function(String);
+
+class CardView extends StatelessWidget {
+  /// Input
+  final String title;
+
+  const CardView({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      elevation: 2,
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        child: Row(
+          children: [
+            const Expanded(flex: 2, child: Icon(Icons.home)),
+            Expanded(
+              flex: 8,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    // leading: const Icon(Icons.album),
+                    title: Text(title),
+                    subtitle: const Text('Wed 22 Feb 18:29'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      TextButton(
+                        child: const Text('Delete'),
+                        onPressed: () {/* ... */},
+                      ),
+                      // const SizedBox(width: 8),
+                      TextButton(
+                        child: const Text('Edit'),
+                        onPressed: () {/* ... */},
+                      ),
+                      // const SizedBox(width: 8),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
