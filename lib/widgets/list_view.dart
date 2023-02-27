@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/todo.dart';
 import 'card_view.dart';
+import 'dialog_utils.dart';
 
 class ListProviderView extends StatefulWidget {
   // Input
@@ -25,9 +26,26 @@ class _ListViewState extends State<ListProviderView> {
     });
   }
 
-  void _onEditClicked(int val) {
+  void _editTodoItem(String val, int index) {
     setState(() {
-      list = [];
+      list[index].name = val;
+    });
+  }
+
+  Todo getElementAt(int index) => list.elementAt(index);
+
+  void _onEditClicked(int index) {
+    setState(() {
+      // Get todo item to be edited
+      final todoAt = getElementAt(index);
+
+      DialogUtils().showCustomDialog(context,
+          index: index,
+          title: 'Edit Item',
+          submitBttnText: "Ok",
+          hintText: 'Type Todo name',
+          inputValue: todoAt.name,
+          submitBttnCallback: _editTodoItem);
     });
   }
 

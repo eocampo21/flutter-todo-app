@@ -25,15 +25,14 @@ class _HomeState extends State<HomeView> {
           onPressed: () => DialogUtils().showCustomDialog(context,
               title: 'Add new Item',
               submitBttnText: "Ok",
-              hintText: 'Type Todo namdas',
+              hintText: 'Type Todo name',
               submitBttnCallback: _addTodoItem),
           tooltip: 'Add Item',
           child: const Icon(Icons.add)),
     );
   }
 
-  void _addTodoItem(String textFieldValue) {
-    debugPrint('_addTodoItem: called');
+  void _addTodoItem(String textFieldValue, int index) {
     setState(() {
       _todos.add(Todo(name: textFieldValue, checked: false));
     });

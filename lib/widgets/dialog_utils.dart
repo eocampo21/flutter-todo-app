@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-typedef SubmitBttnClicledCallback = void Function(String textFieldValue);
+typedef SubmitBttnClicledCallback = void Function(
+    String textFieldValue, int index);
 
 class DialogUtils {
   // Inputs
@@ -9,17 +10,20 @@ class DialogUtils {
   // Outputs
   late final SubmitBttnClicledCallback submitBttn;
 
-  final TextEditingController _textFieldController = TextEditingController();
-
-  // ignore: unused_element
   Future<void> showCustomDialog(BuildContext context,
       {required String title,
       String submitBttnText = "Ok",
       required SubmitBttnClicledCallback submitBttnCallback,
-      required String hintText}) async {
+      required String hintText,
+      String inputValue = '',
+      int index = -1}) async {
+    final TextEditingController _textFieldController =
+        TextEditingController(text: inputValue);
+
     showDialog(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
       builder: (_) {
         return AlertDialog(
           title: Text(title),
@@ -33,7 +37,7 @@ class DialogUtils {
               onPressed: () {
                 Navigator.of(context).pop(); // Close dialog
                 submitBttnCallback(
-                    _textFieldController.text); // return value to parent
+                    _textFieldController.text, index); // return value to parent
                 _textFieldController.clear(); // clean dialog input
               },
             ),
