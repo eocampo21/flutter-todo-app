@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../models/todo.dart';
 import '../widgets/dialog_utils.dart';
-import '../widgets/list_view.dart';
+import '../widgets/todo_list_view_provider.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class ListViewContainer extends StatefulWidget {
+  const ListViewContainer({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  _ListViewContainerState createState() => _ListViewContainerState();
 }
 
-class _HomeState extends State<HomeView> {
+class _ListViewContainerState extends State<ListViewContainer> {
   final List<Todo> _todos = <Todo>[];
 
   @override
@@ -20,7 +20,7 @@ class _HomeState extends State<HomeView> {
       appBar: AppBar(
         title: const Text('Todo list'),
       ),
-      body: ListProviderView(list: _todos),
+      body: TodoListViewProvider(list: _todos),
       floatingActionButton: FloatingActionButton(
           onPressed: () => DialogUtils().showCustomDialog(context,
               title: 'Add new Item',

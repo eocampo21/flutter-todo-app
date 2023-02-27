@@ -36,8 +36,8 @@ class DialogUtils {
               child: Text(submitBttnText),
               onPressed: () {
                 Navigator.of(context).pop(); // Close dialog
-                submitBttnCallback(
-                    _textFieldController.text, index); // return value to parent
+                submitBttnCallback(_textFieldController.text,
+                    index); // return values to parent
                 _textFieldController.clear(); // clean dialog input
               },
             ),

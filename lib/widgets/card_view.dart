@@ -49,7 +49,6 @@ class CardView extends StatelessWidget {
                       TextButton(
                         child: const Text('Delete'),
                         onPressed: () {
-                          debugPrint('movieTitle: $index');
                           onDeleteClicked(index);
                         },
                       ),
@@ -57,7 +56,6 @@ class CardView extends StatelessWidget {
                       TextButton(
                         child: const Text('Edit'),
                         onPressed: () {
-                          debugPrint('movieTitle: $index');
                           onEditClicked(index);
                         },
                       ),
