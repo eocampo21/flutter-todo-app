@@ -56,6 +56,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_redux",
+      "rootUri": "file:///Users/steve/.pub-cache/hosted/pub.dev/flutter_redux-0.10.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/steve/Documents/flutter-arm64/packages/flutter_test",
       "packageUri": "lib/",
@@ -94,6 +100,12 @@
     {
       "name": "path",
       "rootUri": "file:///Users/steve/.pub-cache/hosted/pub.dev/path-1.8.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "redux",
+      "rootUri": "file:///Users/steve/.pub-cache/hosted/pub.dev/redux-5.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -152,7 +164,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-02-24T17:25:36.112491Z",
+  "generated": "2023-02-28T18:17:04.308498Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

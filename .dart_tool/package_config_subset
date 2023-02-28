@@ -30,6 +30,10 @@ flutter_lints
 2.12
 file:///Users/steve/.pub-cache/hosted/pub.dev/flutter_lints-1.0.4/
 file:///Users/steve/.pub-cache/hosted/pub.dev/flutter_lints-1.0.4/lib/
+flutter_redux
+2.12
+file:///Users/steve/.pub-cache/hosted/pub.dev/flutter_redux-0.10.0/
+file:///Users/steve/.pub-cache/hosted/pub.dev/flutter_redux-0.10.0/lib/
 js
 2.16
 file:///Users/steve/.pub-cache/hosted/pub.dev/js-0.6.5/
@@ -54,6 +58,10 @@ path
 2.12
 file:///Users/steve/.pub-cache/hosted/pub.dev/path-1.8.2/
 file:///Users/steve/.pub-cache/hosted/pub.dev/path-1.8.2/lib/
+redux
+2.12
+file:///Users/steve/.pub-cache/hosted/pub.dev/redux-5.0.0/
+file:///Users/steve/.pub-cache/hosted/pub.dev/redux-5.0.0/lib/
 source_span
 2.14
 file:///Users/steve/.pub-cache/hosted/pub.dev/source_span-1.9.1/

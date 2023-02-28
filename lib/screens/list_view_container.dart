@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_my_app/actions/actions.dart';
+import 'package:flutter_my_app/models/app_state.dart';
 
 import '../models/todo.dart';
 import '../widgets/dialog_utils.dart';
 import '../widgets/todo_list_view_provider.dart';
+
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 class ListViewContainer extends StatefulWidget {
   const ListViewContainer({super.key});
@@ -20,7 +25,14 @@ class _ListViewContainerState extends State<ListViewContainer> {
       appBar: AppBar(
         title: const Text('Todo list'),
       ),
-      body: TodoListViewProvider(list: _todos),
+      // Connect to the store
+      body: StoreConnector<AppState, bool>(
+        converter: (Store<AppState> store) => store.state.reduxSetup,
+        builder: (BuildContext context, bool reduxSetup) {
+          debugPrint('reduxSetup: $reduxSetup');
+          return TodoListViewProvider(list: _todos);
+        },
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => DialogUtils().showCustomDialog(context,
               title: 'Add new Item',
@@ -34,6 +46,7 @@ class _ListViewContainerState extends State<ListViewContainer> {
 
   void _addTodoItem(String textFieldValue, int index) {
     setState(() {
+      StoreProvider.of<AppState>(context).dispatch(TestAction(true));
       _todos.add(Todo(name: textFieldValue, checked: false));
     });
   }
