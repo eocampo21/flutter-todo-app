@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../models/models.dart';
+import '../redux/actions/todo_actions.dart';
 import 'card_view.dart';
 import 'dialog_utils.dart';
 
@@ -24,9 +25,8 @@ class _TodoListViewProviderState extends State<TodoListViewProvider> {
   }
 
   void _editTodoItem(String val, int index) {
-    setState(() {
-      _todos[index].name = val;
-    });
+    final store = StoreProvider.of<TodoState>(context);
+    store.dispatch(EditTodoAction(newText: val, id: index));
   }
 
   Todo getElementAt(int index) => _todos.elementAt(index);

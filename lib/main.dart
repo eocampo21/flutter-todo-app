@@ -27,7 +27,7 @@ void main() {
   // Create the store
   final store = Store<TodoState>(
     todoAppReducer,
-    // initialState: TodoState.InitializeState(),
+    // initialState: TodoState.initialState(),
     // Initialize with some examples
     initialState: TodoState(todos: [todo, secondTodo]),
   );

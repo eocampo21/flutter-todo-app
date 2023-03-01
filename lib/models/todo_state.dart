@@ -14,6 +14,7 @@ class TodoState {
     return 'AppState: {todos: $todos}';
   }
 
-  // ignore: non_constant_identifier_names
-  TodoState.InitializeState() : todos = [];
+  factory TodoState.initialState() {
+    return const TodoState(todos: []);
+  }
 }
