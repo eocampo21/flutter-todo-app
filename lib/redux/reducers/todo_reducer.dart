@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../actions/todo_actions.dart';
-import '../models/models.dart';
+import '../../models/models.dart';
 
 List<Todo> todosReducer(List<Todo> state, TodoAction action) {
   if (action is AddTodoAction) {

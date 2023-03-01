@@ -1,39 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
-import '../models/todo.dart';
+import '../models/models.dart';
 import 'card_view.dart';
 import 'dialog_utils.dart';
 
 class TodoListViewProvider extends StatefulWidget {
-  // Input
-  final List<Todo> list;
-
-  const TodoListViewProvider({super.key, required this.list});
+  const TodoListViewProvider({super.key});
 
   @override
-  _TodoListViewProviderState createState() =>
-      // ignore: no_logic_in_create_state
-      _TodoListViewProviderState(list: list);
+  _TodoListViewProviderState createState() => _TodoListViewProviderState();
 }
 
 class _TodoListViewProviderState extends State<TodoListViewProvider> {
-  late final List<Todo> list;
+  late List<Todo> _todos = [];
 
-  _TodoListViewProviderState({required this.list});
+  _TodoListViewProviderState();
 
   void _onDeleteClicked(int val) {
     setState(() {
-      list.removeAt(val);
+      _todos.removeAt(val);
     });
   }
 
   void _editTodoItem(String val, int index) {
     setState(() {
-      list[index].name = val;
+      _todos[index].name = val;
     });
   }
 
-  Todo getElementAt(int index) => list.elementAt(index);
+  Todo getElementAt(int index) => _todos.elementAt(index);
 
   void _onEditClicked(int index) {
     setState(() {
@@ -52,15 +48,22 @@ class _TodoListViewProviderState extends State<TodoListViewProvider> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (BuildContext ctxt, int index) {
-          return CardView(
-            title: list[index].name,
-            index: index,
-            onDeleteClicked: _onDeleteClicked,
-            onEditClicked: _onEditClicked,
-          );
-        });
+    return StoreConnector<TodoState, List<Todo>>(
+      converter: (store) => store.state.todos,
+      builder: (context, todos) {
+        _todos = todos;
+        return ListView.builder(
+          itemCount: _todos.length,
+          itemBuilder: (BuildContext ctxt, int index) {
+            return CardView(
+              title: _todos[index].name,
+              index: index,
+              onDeleteClicked: _onDeleteClicked,
+              onEditClicked: _onEditClicked,
+            );
+          },
+        );
+      },
+    );
   }
 }

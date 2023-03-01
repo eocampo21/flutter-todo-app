@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_my_app/actions/actions.dart';
-// import 'package:flutter_my_app/models/app_state.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 import '../redux/actions/todo_actions.dart';
 import '../models/models.dart';
 import '../widgets/dialog_utils.dart';
 import '../widgets/todo_list_view_provider.dart';
-
-import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 
 class ListViewContainer extends StatefulWidget {
   const ListViewContainer({super.key});
@@ -18,8 +15,6 @@ class ListViewContainer extends StatefulWidget {
 }
 
 class _ListViewContainerState extends State<ListViewContainer> {
-  // final List<Todo> _todos = <Todo>[];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +25,7 @@ class _ListViewContainerState extends State<ListViewContainer> {
       body: StoreConnector<TodoState, List<Todo>>(
           converter: (Store<TodoState> store) => store.state.todos,
           builder: (BuildContext context, todos) {
-            return TodoListViewProvider(list: todos);
+            return const TodoListViewProvider();
           }),
       floatingActionButton: FloatingActionButton(
           onPressed: () => DialogUtils().showCustomDialog(context,
@@ -45,12 +40,10 @@ class _ListViewContainerState extends State<ListViewContainer> {
 
   void _addTodoItem(String textFieldValue, int index) {
     setState(() {
-      debugPrint('_addTodoItem $textFieldValue');
-      // StoreProvider.of<AppState>(context).dispatch(TestAction(true));
+      debugPrint('dispatch AddTodoAction $textFieldValue');
       StoreProvider.of<TodoState>(context).dispatch(
         AddTodoAction(text: textFieldValue),
       );
-      // _todos.add(Todo(name: textFieldValue, checked: false, key: index));
     });
   }
 }
