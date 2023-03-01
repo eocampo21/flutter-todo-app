@@ -8,7 +8,7 @@ class TodoListViewProvider extends StatefulWidget {
   // Input
   final List<Todo> list;
 
-  const TodoListViewProvider({Key? key, required this.list}) : super(key: key);
+  const TodoListViewProvider({super.key, required this.list});
 
   @override
   _TodoListViewProviderState createState() =>
